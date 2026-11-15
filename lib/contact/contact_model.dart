@@ -1,0 +1,20 @@
+import '/flutter_flow/flutter_flow_util.dart';
+import 'contact_widget.dart' show ContactWidget;
+import 'package:flutter/material.dart';
+
+class ContactModel extends FlutterFlowModel<ContactWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  // State field(s) for Column widget.
+  ScrollController? columnController;
+
+  @override
+  void initState(BuildContext context) {
+    columnController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    columnController?.dispose();
+  }
+}
