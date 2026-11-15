@@ -9,13 +9,18 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.parentpartnership.app
-        create_resource: true
       flutter: stable
     scripts:
+      - name: Set up code signing settings on Xcode project
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "com.parentpartnership.app" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
       - name: Get Flutter packages
         script: flutter pub get
-      - name: Configure iOS code signing
-        script: xcode-project use-profiles
       - name: Build IPA
         script: flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
     artifacts:
