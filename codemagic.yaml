@@ -9,6 +9,7 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.parentpartnership.app
+        create_resource: true
       flutter: stable
     scripts:
       - name: Get Flutter packages
